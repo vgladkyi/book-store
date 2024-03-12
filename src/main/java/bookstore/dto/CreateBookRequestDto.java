@@ -1,17 +1,13 @@
-package bookstore.model;
+package bookstore.dto;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "books")
-public class Book {
+public class CreateBookRequestDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,5 +17,4 @@ public class Book {
     private BigDecimal price;
     private String description;
     private String coverImage;
-
 }
