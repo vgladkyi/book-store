@@ -38,6 +38,8 @@ public class BookRepositoryImpl implements BookRepository {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
             Book book = entityManager.find(Book.class, id);
             return Optional.ofNullable(book);
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Can't find book with id " + id);
         }
     }
 
@@ -45,6 +47,8 @@ public class BookRepositoryImpl implements BookRepository {
     public List<Book> findAll() {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
             return entityManager.createQuery("SELECT b FROM Book b", Book.class).getResultList();
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Can't get books from DB");
         }
     }
 }
