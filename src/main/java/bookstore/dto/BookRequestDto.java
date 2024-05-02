@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
-public class CreateBookRequestDto {
+public class BookRequestDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
