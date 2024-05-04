@@ -8,6 +8,8 @@ import bookstore.model.Book;
 import bookstore.repository.BookRepository;
 import bookstore.service.BookService;
 import java.util.List;
+
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,7 @@ public class BookServiceImpl implements BookService {
                 .toList();
     }
 
+    @Transactional
     @Override
     public BookDto updateById(Long id, BookRequestDto requestDto) {
         bookRepository.findById(id).orElseThrow(
