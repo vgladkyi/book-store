@@ -35,10 +35,10 @@ public class Book {
     @Column(nullable = false, name = "price")
     private BigDecimal price;
 
-    @Column(nullable = false, name = "description")
+    @Column(name = "description")
     private String description;
 
-    @Column(nullable = false, name = "cover_image")
+    @Column(name = "cover_image")
     private String coverImage;
 
     @Column(nullable = false, name = "is_deleted")
