@@ -1,16 +1,10 @@
 package bookstore.dto;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
-public class CreateBookRequestDto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class BookRequestDto {
     private String title;
     private String author;
     private String isbn;
