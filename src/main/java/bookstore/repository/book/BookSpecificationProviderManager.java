@@ -19,7 +19,6 @@ public class BookSpecificationProviderManager implements SpecificationProviderMa
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Cant find correct specification "
                         + "provider for key" + key));
-
     }
 }
 
