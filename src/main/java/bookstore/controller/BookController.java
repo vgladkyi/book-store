@@ -2,6 +2,7 @@ package bookstore.controller;
 
 import bookstore.dto.BookDto;
 import bookstore.dto.BookRequestDto;
+import bookstore.dto.BookSearchParametersDto;
 import bookstore.mapper.BookMapper;
 import bookstore.model.Book;
 import bookstore.service.BookService;
@@ -54,4 +55,14 @@ public class BookController {
     public void deleteBook(@PathVariable Long id) {
         bookService.deleteById(id);
     }
+
+    @GetMapping("/search")
+    @ResponseStatus(HttpStatus.OK)
+    public List<BookDto> searchBooks(BookSearchParametersDto searchParameters) {
+        return bookService.search(searchParameters)
+                .stream()
+                .map(bookMapper::toDto)
+                .toList();
+    }
+
 }
