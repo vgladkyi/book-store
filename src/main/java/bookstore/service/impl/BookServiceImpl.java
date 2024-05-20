@@ -9,6 +9,7 @@ import bookstore.service.BookService;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,8 +33,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> findAll() {
-        return bookRepository.findAll();
+    public List<Book> findAll(Pageable pageable) {
+        return bookRepository.findAll(pageable).toList();
     }
 
     @Transactional
@@ -51,8 +52,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> search(BookSearchParametersDto params) {
+    public List<Book> search(BookSearchParametersDto params, Pageable pageable) {
         Specification<Book> bookSpecification = bookSpecificationBuilder.build(params);
-        return bookRepository.findAll(bookSpecification);
+        return bookRepository.findAll(bookSpecification, pageable).toList();
     }
 }
